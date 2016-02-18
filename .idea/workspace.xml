@@ -24,8 +24,8 @@
       <file leaf-file-name="dfs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dfs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8369565">
-              <caret line="40" column="81" selection-start-line="40" selection-start-column="81" selection-end-line="40" selection-end-column="81" />
+            <state vertical-scroll-proportion="0.4978261">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -37,6 +37,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/depth_first_search.py" />
+        <option value="$PROJECT_DIR$/dfs.py" />
       </list>
     </option>
   </component>
@@ -290,8 +291,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dfs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8369565">
-          <caret line="40" column="81" selection-start-line="40" selection-start-column="81" selection-end-line="40" selection-end-column="81" />
+        <state vertical-scroll-proportion="0.4978261">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
           <folding />
         </state>
       </provider>
