@@ -1,5 +1,3 @@
-# My tree is set up as a dictionary of nodes as keys and their children in the values as a list.
-# Notice root is not in values. node in value that is not a key is a leaf node.
 family_tree = {'root': ['child1', 'child2'],
                'child1': ['gc1', 'gc2'],
                'child2': ['gc3'],
