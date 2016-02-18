@@ -1,30 +1,44 @@
-family_tree = {'root': ['child1', 'child2'],
-               'child1': ['gc1', 'gc2'],
-               'child2': ['gc3'],
-               'gc3': ['ggc1', 'ggc2', 'ggc3']}
+import networkx as nx
 
 
-# depth first search
-def dfs(node, tree, start, path):
+def dfs(node, graph, start):
+    leaves = [n for n, d in graph.out_degree().items() if d == 0]
+    root = [n for n, d in graph.in_degree().items() if d == 0]
+
+    if start == "":
+        start = root[0]
     if start == node:
         return node
-    if tree[start] == []:
-        if start in path:
-            path.remove(start)
-        parent = path.pop()
-        tree[parent].remove(start)
-        return dfs(node, tree, parent, path)
-    if start not in path:
-        path.append(start)
-    for child in tree[start]:
-        if child in tree.keys():
-            return dfs(node, tree, child, path)
-        else:
-            if child == node:
-                return node
-            tree[start].remove(child)
-            return dfs(node, tree, start, path)
-    return node + ' is not in this tree'
+
+    if start in leaves:
+        if start in root:
+            return node + ' is not in this tree'
+        parent = graph.predecessors(start)[0]
+        graph.remove_edge(parent, start)
+        return dfs(node, graph, parent)
+
+    for child in nx.descendants(graph, start):
+        return dfs(node, graph, child)
 
 
-print(dfs('ggc1', family_tree, 'root', path=[]))
+# rest of code is to test out dfs function
+def create_graph(tree):
+    graph = nx.DiGraph()
+    for node in tree.keys():
+        for value in tree[node]:
+            graph.add_edge(node, value)
+    return graph
+
+
+def test():
+    family_tree = {'root': ['child1', 'child2'],
+                   'child1': ['gc1', 'gc2'],
+                   'child2': ['gc3'],
+                   'gc3': ['ggc1', 'ggc2', 'ggc3']}
+
+    graph = create_graph(family_tree)
+    print(dfs('ggc2', graph, start=""))
+
+
+if __name__ == '__main__':
+    test()
