@@ -24,8 +24,18 @@
       <file leaf-file-name="dfs.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dfs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.27173913">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6847826">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bfs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bfs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -38,6 +48,7 @@
       <list>
         <option value="$PROJECT_DIR$/depth_first_search.py" />
         <option value="$PROJECT_DIR$/dfs.py" />
+        <option value="$PROJECT_DIR$/bfs.py" />
       </list>
     </option>
   </component>
@@ -99,7 +110,7 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.other" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.depth_first_search">
+  <component name="RunManager" selected="Python.bfs">
     <configuration default="false" name="depth_first_search" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -113,6 +124,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="trees" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dfs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="bfs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="trees" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bfs.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -239,12 +267,14 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.depth_first_search" />
+      <item index="1" class="java.lang.String" itemvalue="Python.bfs" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.depth_first_search" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.bfs" />
+        <item index="1" class="java.lang.String" itemvalue="Python.depth_first_search" />
       </list>
     </recent_temporary>
   </component>
@@ -289,10 +319,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bfs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dfs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.27173913">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6847826">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
           <folding />
         </state>
       </provider>
