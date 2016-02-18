@@ -19,7 +19,7 @@ def bfs(node, graph, start):
         graph.remove_edge(parent, start)
         return bfs(node, graph, parent)
 
-    for child in nx.descendants(graph, start):
+    for child in graph.successors(start):
         return bfs(node, graph, child)
 
 

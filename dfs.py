@@ -17,7 +17,7 @@ def dfs(node, graph, start):
         graph.remove_edge(parent, start)
         return dfs(node, graph, parent)
 
-    for child in nx.descendants(graph, start):
+    for child in graph.successors(start):
         return dfs(node, graph, child)
 
 
