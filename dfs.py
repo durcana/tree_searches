@@ -21,7 +21,17 @@ def dfs(node, graph, start):
         return dfs(node, graph, child)
 
 
-# rest of code is to test out dfs function
+"""
+The rest of this code is for testing.
+When running the test function, I am expecting either the node in the
+first parameter of dfs to return if the node is in the graph created in
+create_graph, or to return a statement that the node is not in the tree
+if it is not in the graph.
+
+Family tree is a non-binary tree.
+"""
+
+
 def create_graph(tree):
     graph = nx.DiGraph()
     for node in tree.keys():
