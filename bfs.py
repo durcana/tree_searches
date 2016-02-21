@@ -1,26 +1,18 @@
 import networkx as nx
 
 
-def bfs(node, graph, start):
-    leaves = [n for n, d in graph.out_degree().items() if d == 0]
-    root = [n for n, d in graph.in_degree().items() if d == 0]
+def bfs(node, graph):
+    roots = [n for n, d in graph.in_degree().items() if d == 0]
 
-    if start == "":
-        start = root[0]
-        if start == node:
+    for root in roots:
+        if node in graph.successors(root):
             return node
-    if node in graph.successors(start):
-        return node
 
-    if start in leaves:
-        if start in root:
-            return node + ' is not in this tree'
-        parent = graph.predecessors(start)[0]
-        graph.remove_edge(parent, start)
-        return bfs(node, graph, parent)
+        for child in graph.successors(root):
+            graph.remove_edge(root, child)
 
-    for child in graph.successors(start):
-        return bfs(node, graph, child)
+
+    return bfs(node, graph)
 
 
 """
@@ -43,13 +35,13 @@ def create_graph(tree):
 
 
 def test():
-    family_tree = {'root': ['child1', 'child2'],
+    family_tree = {'roots': ['child1', 'child2'],
                    'child1': ['gc1', 'gc2'],
                    'child2': ['gc3'],
                    'gc3': ['ggc1', 'ggc2', 'ggc3']}
 
     graph = create_graph(family_tree)
-    print(bfs('ggc2', graph, start=""))
+    print(bfs('ggc2', graph))
 
 
 if __name__ == '__main__':
