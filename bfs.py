@@ -1,18 +1,27 @@
 import networkx as nx
 
 
+"""
+Since append() adds the node to the end of check_list, it will check all of the nodes at one level
+before moving on to the next. To check this to be true without doing pdb, you can uncomment the
+line in the code and see how check_list changes. Done this way, we do not change the actual graph,
+but still do not need a 'visited' attribute.
+"""
+
+
 def bfs(node, graph):
-    roots = [n for n, d in graph.in_degree().items() if d == 0]
+    check_list = [n for n, d in graph.in_degree().items() if d == 0]
 
-    for root in roots:
-        if node in graph.successors(root):
+    while check_list:
+        #  print(check_list)
+        n = check_list[0]
+        if n == node:
             return node
+        for child in graph.successors(n):
+            check_list.append(child)
+        check_list.remove(n)
 
-        for child in graph.successors(root):
-            graph.remove_edge(root, child)
-
-
-    return bfs(node, graph)
+    return node + ' is not in this tree'
 
 
 """
@@ -35,7 +44,7 @@ def create_graph(tree):
 
 
 def test():
-    family_tree = {'roots': ['child1', 'child2'],
+    family_tree = {'root': ['child1', 'child2'],
                    'child1': ['gc1', 'gc2'],
                    'child2': ['gc3'],
                    'gc3': ['ggc1', 'ggc2', 'ggc3']}

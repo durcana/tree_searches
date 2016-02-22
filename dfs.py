@@ -2,23 +2,25 @@ import networkx as nx
 
 
 def dfs(node, graph, start):
-    leaves = [n for n, d in graph.out_degree().items() if d == 0]
     root = [n for n, d in graph.in_degree().items() if d == 0]
 
     if start == "":
         start = root[0]
+
     if start == node:
         return node
 
-    if start in leaves:
-        if start in root:
-            return node + ' is not in this tree'
-        parent = graph.predecessors(start)[0]
-        graph.remove_edge(parent, start)
-        return dfs(node, graph, parent)
+    if graph.node[start]['visited'] == False:
+        graph.node[start]['visited'] = True
 
     for child in graph.successors(start):
-        return dfs(node, graph, child)
+        if graph.node[child]['visited'] == False:
+            return dfs(node, graph, child)
+
+    if graph.predecessors(start) == []:
+        return node + ' is not in this tree'
+    parent = graph.predecessors(start)[0]
+    return dfs(node, graph, parent)
 
 
 """
@@ -37,6 +39,10 @@ def create_graph(tree):
     for node in tree.keys():
         for value in tree[node]:
             graph.add_edge(node, value)
+    # Found this in documentation of networkx: "Add node attributes using add_node(), add_nodes_from() or G.node"
+    # So graph.nodes(visited=False) will not work.
+    for n in graph.nodes():
+        graph.node[n]['visited'] = False
     return graph
 
 
