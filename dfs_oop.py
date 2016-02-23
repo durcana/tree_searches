@@ -5,7 +5,6 @@ class Node:
     def __init__(self, name):
         self.name = name
         self.children = []
-        self.visited = False
 
     def add_child(self, new_node):
         self.children.append(new_node)
@@ -16,56 +15,46 @@ class Node:
     def get_children(self):
         return [child.name for child in self.children]
 
+    def __str__(self):
+        return str(self.name)
 
-def create_tree():
-    # not sure of a better way to create these objects. Tried iterating but got confused.
-    node0 = Node(0)
-    node1 = Node(1)
-    node2 = Node(2)
-    node3 = Node(3)
-    node4 = Node(4)
-    node5 = Node(5)
-    node6 = Node(6)
-    node7 = Node(7)
-    node8 = Node(8)
-    node9 = Node(9)
 
-    node_list = [node0]
-    node_children = [node1, node2, node3, node4, node5, node6, node7, node8, node9]
-    
-    # why is this skipping every other variable in node_children?
-    for node in node_children:
-        parent = random.choice(node_list)
-        parent.add_child(node)
-        node_list.append(node)
-        node_children.remove(node)
+def create_random_tree():
+    root = Node(0)
+    node_list = [root]
+    node_children = []
+    for i in range(1,10):
+        node_children.append(Node(i))
+
+    # not sure why for loop iterates on every other, but while loop fixes problem for now.
+    while node_children:
+        for node in node_children:
+            print(node.name)
+            parent = random.choice(node_list)
+            parent.add_child(node)
+            node_list.append(node)
+            node_children.remove(node)
 
     for node in node_list:
         print(node.node(), node.get_children())
-        
-    return node_list
-        
-        
-def dfs(list_of_nodes, goal_node, current_node):
-    if current_node not in list_of_nodes:
-        current_node = list_of_nodes[0]
-        
-    if current_node == goal_node:
+
+    return root
+
+
+def dfs(current_node, goal_node, visited_nodes=set()):
+
+    print('check if ' + str(current_node.name) + ' is ' + str(goal_node))
+    if current_node.name == goal_node:
         return goal_node
-    
-    if current_node.visited == False:
-        current_node.visited = True
+    visited_nodes.add(current_node)
 
     for child in current_node.children:
-        if child.visited == False:
-            return dfs(list_of_nodes, goal_node, child)
+        if child not in visited_nodes:
+            result = dfs(child, goal_node, visited_nodes)
 
-    for node in list_of_nodes:
-        if current_node in node.children:
-            return dfs(list_of_nodes, goal_node, node)
-
-    print(goal_node, 'is not in this tree')
+            if result is not None:
+                    return result
 
 
-node_list = create_tree()
-print(dfs(node_list, 3, node_list[0]))
+root = create_random_tree()
+print(dfs(root, 7))
