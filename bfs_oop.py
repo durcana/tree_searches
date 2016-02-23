@@ -40,20 +40,20 @@ def create_random_tree():
     return root
 
 
-def dfs(current_node, goal_node, visited_nodes=set()):
+def bfs(current_node, goal_node):
+    visited_nodes = [current_node]
 
-    print('check if ' + str(current_node.name) + ' is ' + str(goal_node))
-    if current_node.name == goal_node:
-        return goal_node
-    visited_nodes.add(current_node)
+    while visited_nodes:
+        node = visited_nodes[0]
+        if node.name == goal_node:
+            return goal_node
+        for child in node.children:
+            visited_nodes.append(child)
+        visited_nodes.remove(node)
 
-    for child in current_node.children:
-        if child not in visited_nodes:
-            result = dfs(child, goal_node, visited_nodes)
-
-            if result is not None:
-                return result
+    return str(goal_node) + ' is not in this tree'
 
 
 root = create_random_tree()
-print(dfs(root, 7))
+print(bfs(root, 5))
+print(bfs(root, 11))
